@@ -1,0 +1,36 @@
+name: CI Pipeline Proyek Statis
+
+# Perintah: Trigger pipeline setiap ada push ke branch 'main'
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  # Nama job kita (bisa apa saja)
+  build-and-test:
+    # Menggunakan runner (mesin virtual) Ubuntu terbaru
+    runs-on: ubuntu-latest
+
+    steps:
+      # Langkah 1: "Checkout" atau mengunduh kode Anda ke runner
+      - name: Checkout kode
+        uses: actions/checkout@v4
+
+      # Langkah 2: Simulasi "Build"
+      # (Karena ini web statis, tidak ada build, kita hanya cetak pesan)
+      - name: Build step
+        run: echo "Tidak ada proses build yang diperlukan untuk web statis."
+
+      # Langkah 3: Menjalankan Pengujian (Sesuai poin 1 tugas)
+      - name: Run validation test
+        run: |
+          # Berikan izin eksekusi pada skrip tes
+          chmod +x test.sh
+          # Jalankan skrip tes
+          ./test.sh
+          
+      # Langkah 4: Laporan Hasil (Sesuai poin 2 tugas)
+      # Langkah ini tidak perlu ditulis. GitHub secara OTOMATIS akan:
+      # - Melaporkan "Success" (centang hijau) jika 'Run validation test' berhasil (exit 0)
+      # - Melaporkan "Failure" (silang merah) jika 'Run validation test' gagal (exit 1)
+      # Semua laporan ini akan muncul di tab "Actions"
