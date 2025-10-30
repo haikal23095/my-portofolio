@@ -1,0 +1,67 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  margin-bottom: 20px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0 20px 0 50px;
+  /* background-color: rgba(10, 0, 0, 0.8); */
+  background-color: #f0f0f0;
+  opacity: 0.9;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  
+}
+
+main {
+  padding-top: 80px;
+}
+
+.brand {
+  display: flex;
+  gap: 10px;
+}
+
+.brand img {
+  width: 6%;
+  height: auto;
+  object-fit: cover;
+}
+
+.brand h1 a {
+  text-decoration: none;
+  color: #f0a000;
+}
+
+.menu {
+  display: flex;
+  padding: 10px;
+  gap: 20px;
+  list-style: none;
+}
+
+.menu li {
+  display: inline-flex;
+  white-space: nowrap;
+}
+
+.menu li a {
+  color: #f0a000;
+}
+.btn-nav {
+  text-decoration: none;
+}
+
+#about-me {
+  margin-top: 1000px;
+}
