@@ -1,0 +1,219 @@
+/* Import Font (Mirip dengan gambar) */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap");
+
+:root {
+  --bg-color: #050505; /* Hitam sangat pekat */
+  --text-color: #ffffff;
+  --orange-color: #ff8c00; /* Warna oranye tombol */
+  --grid-line: #1a1a1a;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+}
+
+/* Background Grid Effect */
+.grid-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  /* Membuat garis kotak-kotak tipis */
+  background-image: linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 80px 80px; /* Ukuran kotak */
+  opacity: 0.6;
+}
+
+/* Typography Helpers */
+.text-orange {
+  color: var(--orange-color) !important;
+}
+
+/* Navbar */
+.navbar-brand {
+  line-height: 1.2;
+}
+
+/* Buttons */
+.btn-orange {
+  background-color: var(--orange-color);
+  color: #000; /* Teks hitam pada tombol oranye */
+  border: none;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+/* Certificate Card Hover Effect */
+.certificate-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.certificate-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(255, 140, 0, 0.3);
+}
+
+.btn-orange:hover {
+  background-color: #e67e00;
+  color: #fff;
+}
+
+/* Hero Section */
+.hero-section {
+  min-height: 80vh;
+  padding-top: 2rem;
+}
+
+.hero-img {
+  max-height: 450px;
+  object-fit: contain;
+}
+
+/* Project Filter Navigation */
+.nav-pills .nav-link {
+  color: #888;
+  font-weight: 500;
+  padding: 0 1rem;
+  background: none;
+  transition: color 0.3s;
+  text-align: left;
+  margin-right: 15px;
+  padding-left: 0;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .nav-link:hover {
+  background-color: transparent;
+  color: var(--orange-color);
+}
+
+/* Cards */
+.card-img-top {
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-img-top {
+  transform: scale(1.02); /* Efek zoom sedikit saat hover */
+}
+
+/* Profile Card */
+.profile-card {
+  background: rgba(255, 140, 0, 0.1);
+  border: 1px solid rgba(255, 140, 0, 0.3);
+  border-radius: 12px;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.profile-card h4 {
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+/* Styling Badge Tech Stack */
+.badge-custom {
+  background-color: #1f2937; /* Warna abu gelap */
+  color: #e5e7eb; /* Warna teks putih abu */
+  padding: 8px 16px;
+  border-radius: 50px; /* Membuat bentuk kapsul */
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: inline-block;
+  border: 1px solid #374151;
+}
+
+/* Bullet points custom */
+.feature-list li {
+  font-size: 1rem;
+  color: #d1d5db;
+}
+
+/* Gallery Images Hover Effect */
+.gallery-card img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  border: 1px solid #333;
+}
+
+.gallery-card:hover img {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  border-color: var(--orange-color);
+}
+
+/* Tombol Back Link Hover */
+.hover-underline:hover {
+  text-decoration: underline !important;
+  color: #ffaa33 !important;
+}
+
+/* Typography Adjustments */
+.text-justify {
+  text-align: justify;
+}
+
+/* Responsiveness adjustments */
+@media (max-width: 768px) {
+  .hero-section {
+    text-align: center;
+  }
+
+  .d-flex.gap-3 {
+    justify-content: center;
+  }
+
+  .hero-img {
+    margin-top: 30px;
+    max-width: 80%;
+  }
+}
+
+/* Testimonials Section Styling */
+.testimonials-section {
+  position: relative;
+}
+
+.testimonial-card {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 16px !important;
+  backdrop-filter: blur(10px);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 140, 0, 0.4) !important;
+  box-shadow: 0 12px 30px rgba(255, 140, 0, 0.1);
+  background: rgba(255, 255, 255, 0.04) !important;
+}
+
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.star-rating i {
+  font-size: 0.85rem;
+  margin-right: 2px;
+}
+
+.testimonial-card .card-text {
+  line-height: 1.6;
+}
