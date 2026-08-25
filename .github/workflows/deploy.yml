@@ -31,16 +31,16 @@ jobs:
             cd "${{ secrets.PROJECT_PATH }}"
 
             # Mark directory as safe to fix 'dubious ownership' error
-            git config --global --add safe.directory "${{ secrets.PROJECT_PATH }}"
+            sudo git config --global --add safe.directory "${{ secrets.PROJECT_PATH }}"
 
             # Optional: Clean any local changes on the server to prevent conflicts
-            git reset --hard HEAD
+            sudo git reset --hard HEAD
 
             # Pull latest changes
-            git pull origin main
+            sudo git pull origin main
 
             # Install dependencies and build
-            npm install
-            npm run build
+            sudo npm install
+            sudo npm run build
 
             echo "Deployment completed successfully!"
