@@ -30,6 +30,9 @@ jobs:
             # Navigate to project directory (configurable via GitHub Secrets)
             cd "${{ secrets.PROJECT_PATH }}"
 
+            # Mark directory as safe to fix 'dubious ownership' error
+            git config --global --add safe.directory "${{ secrets.PROJECT_PATH }}"
+
             # Optional: Clean any local changes on the server to prevent conflicts
             git reset --hard HEAD
 
