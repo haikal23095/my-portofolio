@@ -1,0 +1,43 @@
+name: Deploy to Production VM
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to Compute Engine via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          script: |
+            # Enable command tracing and exit on error
+            set -e
+            
+            # Load profile configuration for login shell (loads NVM, npm, node etc. if installed via NVM)
+            if [ -f ~/.bashrc ]; then source ~/.bashrc; fi
+            if [ -f ~/.profile ]; then source ~/.profile; fi
+            
+            # Navigate to project directory (configurable via GitHub Secrets)
+            cd "${{ secrets.PROJECT_PATH }}"
+            
+            # Optional: Clean any local changes on the server to prevent conflicts
+            git reset --hard HEAD
+            
+            # Pull latest changes
+            git pull origin main
+            
+            # Install dependencies and build
+            npm install
+            npm run build
+            
+            echo "Deployment completed successfully!"
