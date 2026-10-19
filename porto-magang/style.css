@@ -2,17 +2,56 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap");
 
 :root {
-  --bg-color: #050505; /* Hitam sangat pekat */
+  --bg-color: #070709;
+  --bg-soft: #101114;
+  --panel: rgba(255, 255, 255, 0.025);
+  --panel-strong: rgba(255, 255, 255, 0.04);
   --text-color: #ffffff;
-  --orange-color: #ff8c00; /* Warna oranye tombol */
-  --grid-line: #1a1a1a;
+  --orange-color: #ff8c00;
+  --orange-soft: rgba(255, 140, 0, 0.18);
+  --grid-line: rgba(255, 255, 255, 0.065);
+  --muted: #b9bec8;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--bg-color);
+  position: relative;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(255, 140, 0, 0.14),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(255, 165, 0, 0.08),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at bottom center,
+      rgba(255, 255, 255, 0.04),
+      transparent 40%
+    ),
+    linear-gradient(180deg, #070709 0%, #0d0d12 35%, #09090b 100%);
   color: var(--text-color);
   font-family: "Inter", sans-serif;
   overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    transparent 52%,
+    rgba(0, 0, 0, 0.28) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* Background Grid Effect */
@@ -23,11 +62,12 @@ body {
   width: 100%;
   height: 100vh;
   z-index: -1;
-  /* Membuat garis kotak-kotak tipis */
-  background-image: linear-gradient(var(--grid-line) 1px, transparent 1px),
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-  background-size: 80px 80px; /* Ukuran kotak */
-  opacity: 0.6;
+  background-size: 80px 80px;
+  opacity: 0.8;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
 }
 
 /* Typography Helpers */
@@ -38,42 +78,161 @@ body {
 /* Navbar */
 .navbar-brand {
   line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.hero-text {
+  position: relative;
+}
+
+.hero-text h1 {
+  font-size: clamp(3.2rem, 7vw, 5.5rem);
+  line-height: 0.94;
+  letter-spacing: -0.055em;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #ffffff 0%, #ffd19a 38%, #ff8c00 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-text .lead {
+  font-size: 1.1rem;
+  color: #edf1f7 !important;
+  max-width: 560px;
+  line-height: 1.7;
+}
+
+.hero-text .text-secondary {
+  color: #c8ced9 !important;
+  max-width: 620px;
+  line-height: 1.7;
 }
 
 /* Buttons */
 .btn-orange {
-  background-color: var(--orange-color);
-  color: #000; /* Teks hitam pada tombol oranye */
+  background: linear-gradient(135deg, #ffb347, var(--orange-color));
+  color: #111;
   border: none;
-  border-radius: 6px;
+  border-radius: 12px;
   transition: all 0.3s ease;
+  box-shadow: 0 12px 25px rgba(255, 140, 0, 0.28);
 }
 
 /* Certificate Card Hover Effect */
 .certificate-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   cursor: pointer;
 }
 
 .certificate-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(255, 140, 0, 0.3);
+  box-shadow: 0 16px 30px rgba(255, 140, 0, 0.18);
 }
 
 .btn-orange:hover {
-  background-color: #e67e00;
+  background: linear-gradient(135deg, #ffb347, #e77d00);
   color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 18px 35px rgba(255, 140, 0, 0.28);
+}
+
+.social-row {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-icon:hover {
+  color: var(--orange-color);
+  border-color: rgba(255, 140, 0, 0.7);
+  box-shadow: 0 8px 20px rgba(255, 140, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.social-icon i {
+  font-size: 1.1rem;
 }
 
 /* Hero Section */
 .hero-section {
   min-height: 80vh;
   padding-top: 2rem;
+  position: relative;
+}
+
+.hero-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-portrait-wrap {
+  position: relative;
+  display: inline-block;
+  padding: 18px;
+  border-radius: 30px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 140, 0, 0.18),
+    rgba(255, 255, 255, 0.04)
+  );
+  border: 1px solid rgba(255, 140, 0, 0.28);
+  box-shadow:
+    0 18px 50px rgba(255, 140, 0, 0.12),
+    0 24px 45px rgba(0, 0, 0, 0.24);
+}
+
+.hero-portrait-pattern {
+  position: absolute;
+  inset: 10px;
+  border-radius: 24px;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    radial-gradient(
+      circle at 25% 25%,
+      rgba(255, 140, 0, 0.22),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 75% 35%,
+      rgba(255, 255, 255, 0.14),
+      transparent 30%
+    );
+  background-size:
+    22px 22px,
+    22px 22px,
+    100% 100%,
+    100% 100%;
+  opacity: 0.9;
+  pointer-events: none;
 }
 
 .hero-img {
+  position: relative;
+  z-index: 1;
   max-height: 450px;
   object-fit: contain;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
+  background: rgba(255, 255, 255, 0.02);
 }
 
 /* Project Filter Navigation */
@@ -95,25 +254,58 @@ body {
 }
 
 /* Cards */
+.card {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.project-item .card {
+  padding: 0.2rem;
+  background: rgba(17, 17, 17, 0.55) !important;
+}
+
+.project-item .card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 140, 0, 0.4) !important;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
+}
+
 .card-img-top {
   height: 250px;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform 0.35s ease;
+  border-radius: 14px;
 }
 
 .card:hover .card-img-top {
-  transform: scale(1.02); /* Efek zoom sedikit saat hover */
+  transform: scale(1.02);
+}
+
+.project-item .card .card-body {
+  padding: 1rem 0.5rem 0.7rem;
+}
+
+.card-title {
+  letter-spacing: -0.02em;
 }
 
 /* Profile Card */
 .profile-card {
-  background: rgba(255, 140, 0, 0.1);
-  border: 1px solid rgba(255, 140, 0, 0.3);
-  border-radius: 12px;
+  background: rgba(17, 17, 17, 0.7);
+  border: 1px solid rgba(255, 140, 0, 0.28);
+  border-radius: 18px;
   padding: 1.5rem;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
   max-width: 400px;
   margin: 0 auto;
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.2);
 }
 
 .profile-card h4 {
@@ -141,7 +333,9 @@ body {
 
 /* Gallery Images Hover Effect */
 .gallery-card img {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   width: 100%;
   border: 1px solid #333;
 }
@@ -184,13 +378,45 @@ body {
   position: relative;
 }
 
+.projects-section h3,
+.testimonials-section h3,
+.certifications-section h3 {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.04em;
+}
+
+.projects-section h3::after,
+.testimonials-section h3::after,
+.certifications-section h3::after {
+  content: "";
+  display: block;
+  width: 72px;
+  height: 3px;
+  margin-top: 0.7rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--orange-color), transparent);
+}
+
+.projects-section .container,
+.testimonials-section .container,
+.certifications-section .container {
+  background: rgba(255, 255, 255, 0.012);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 28px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(8px);
+}
+
 .testimonial-card {
   background: rgba(255, 255, 255, 0.02) !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  border-radius: 16px !important;
+  border-radius: 18px !important;
   backdrop-filter: blur(10px);
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.12);
 }
 
 .testimonial-card:hover {
