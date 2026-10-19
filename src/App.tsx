@@ -128,9 +128,9 @@ export default function App() {
                 variants={itemVariants}
                 className="text-lg md:text-xl text-white/60 font-medium mb-8 max-w-xl leading-relaxed"
               >
-                DevOps Enthusiast <span className="text-accent/50 mx-1">|</span>{" "}
-                Cloud Solutions <span className="text-accent/50 mx-1">|</span>{" "}
-                Google Developer Groups Lead
+                Penggemar DevOps <span className="text-accent/50 mx-1">|</span>{" "}
+                Solusi Cloud <span className="text-accent/50 mx-1">|</span>{" "}
+                Ketua Google Developer Groups
               </motion.p>
 
               <motion.div
@@ -167,22 +167,23 @@ export default function App() {
         >
           <div className="flex items-center gap-4 mb-8">
             <h2 className="text-xs font-bold tracking-[0.2em] uppercase text-accent">
-              Who I Am
+              Siapakah Saya
             </h2>
             <div className="h-px flex-1 bg-white/10"></div>
           </div>
           <p className="text-2xl md:text-3xl font-light leading-relaxed text-white/80">
-            A final-year Informatics student with a passion for building{" "}
+            Mahasiswa Teknik Informatika tingkat akhir dengan passion untuk
+            membangun{" "}
             <span className="text-white font-medium">
-              scalable infrastructure
+              infrastruktur yang scalable
             </span>{" "}
-            and modern web applications. Currently leading the{" "}
+            dan aplikasi web modern. Saat ini saya memimpin{" "}
             <span className="text-white font-medium">
               Google Developer Groups
             </span>{" "}
-            at Universitas Trunojoyo Madura and exploring{" "}
-            <span className="text-white font-medium">Deep Learning</span> for
-            smarter solutions.
+            di Universitas Trunojoyo Madura serta menjelajahi{" "}
+            <span className="text-white font-medium">Deep Learning</span> untuk
+            solusi yang lebih cerdas.
           </p>
         </motion.section>
 
@@ -190,7 +191,7 @@ export default function App() {
         <section className="mb-24">
           <div className="flex items-center gap-4 mb-8">
             <h2 className="text-xs font-bold tracking-[0.2em] uppercase text-accent">
-              Core Competencies
+              Kompetensi Utama
             </h2>
             <div className="h-px flex-1 bg-white/10"></div>
           </div>
@@ -198,12 +199,26 @@ export default function App() {
             <SkillCard
               title="DevOps"
               icon={Cloud}
-              skills={["GCP", "Alibaba Cloud","Docker", "Terraform", "Kubernetes", "CI/CD"]}
+              skills={[
+                "GCP",
+                "Alibaba Cloud",
+                "Docker",
+                "Terraform",
+                "Kubernetes",
+                "CI/CD",
+              ]}
             />
             <SkillCard
               title="Backend"
               icon={Code}
-              skills={["PHP","Laravel", "Python", "Node.js", "PostgreSQL", "Redis"]}
+              skills={[
+                "PHP",
+                "Laravel",
+                "Python",
+                "Node.js",
+                "PostgreSQL",
+                "Redis",
+              ]}
             />
             <SkillCard
               title="AI/ML"
@@ -223,7 +238,7 @@ export default function App() {
           <div className="glass-card p-12 rounded-[2rem] text-center relative overflow-hidden group">
             <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <h2 className="text-3xl md:text-4xl font-bold mb-8 relative z-10">
-              Ready to see my work?
+              Siap melihat karya saya?
             </h2>
             <motion.a
               href="https://porto.firmansyahdev.my.id"
@@ -233,7 +248,7 @@ export default function App() {
               whileTap={{ scale: 0.98 }}
               className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-accent hover:text-black transition-colors duration-300 relative z-10"
             >
-              EXPLORE MY PROJECTS
+              LIHAT PROYEK SAYA
               <ExternalLink size={18} />
             </motion.a>
           </div>
@@ -241,10 +256,10 @@ export default function App() {
 
         {/* Footer */}
         <footer className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-white/40 text-sm">
-          <p>© 2026 Firmansyah. Built with AI Assistance.</p>
+          <p>© 2026 Firmansyah. Dibuat dengan bantuan AI.</p>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            Available for new opportunities
+            Tersedia untuk peluang baru
           </div>
         </footer>
       </main>
