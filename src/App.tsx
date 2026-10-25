@@ -15,6 +15,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import profileImg from "./assets/img/profile.jpg";
+import logoImg from "./assets/img/logo.png";
 
 const SocialLink = ({
   href,
@@ -96,7 +97,26 @@ export default function App() {
         <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-blue-500/5 blur-[120px]" />
       </div>
 
-      <main className="max-w-4xl mx-auto px-6 py-20 md:py-32">
+      <main className="max-w-4xl mx-auto px-6 py-12 md:py-20">
+        {/* Navigation / Brand Header */}
+        <header className="flex items-center justify-between mb-16 pt-2">
+          <div className="flex items-center gap-3">
+            <img
+              src={logoImg}
+              alt="Firmansyah Logo"
+              className="h-9 md:h-11 w-auto object-contain filter drop-shadow-[0_0_12px_rgba(0,242,255,0.2)]"
+            />
+          </div>
+          <a
+            href="https://porto.firmansyahdev.my.id"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs font-semibold tracking-[0.2em] uppercase text-white/60 hover:text-accent transition-colors flex items-center gap-1.5"
+          >
+            Portofolio Lengkap <ExternalLink size={13} />
+          </a>
+        </header>
+
         {/* Hero Section */}
         <motion.section
           variants={containerVariants}
